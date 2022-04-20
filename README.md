@@ -12,6 +12,12 @@ $ docker build -t db ozagrabska.database
 $ docker run -p 3306:3306 -d db
 ```
 
+Connecting to database
+
+```
+$ mysql --host=localhost --port=3306 --user=familyuser --password=kotki123
+```
+
 ## familyapp
 
 Running familyapp:
