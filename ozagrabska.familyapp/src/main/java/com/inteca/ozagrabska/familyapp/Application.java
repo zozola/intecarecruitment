@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -29,5 +31,10 @@ public class Application {
 		Optional<Family> family = repository.findById(Integer.parseInt(id));
 
 		return String.format("Rodzina o numerze %s %s", id, family.isPresent() ? "istnieje" : "nie istnieje");
+	}
+
+	@PostMapping("/CreateFamily")
+	public String CreateFamily(@RequestBody CreateFamilyJson json) {
+		return String.format("Tworzysz rodzinę %s", json.getFamilyName());
 	}
 }
